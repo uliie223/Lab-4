@@ -1,0 +1,42 @@
+13 ?- house=house.
+true.
+Explanation: Both terms are identical atoms.
+
+14 ?- house=abc.
+false.
+Explanation: They are two different atoms and cannot unify.
+
+15 ?- edge(a,b)=edge(C,b).
+C = a.
+Explanation: Functors match, second argument matches, so C unifies with 'a'.
+
+16 ?- edge(a,d)=edge(C,B).
+C = a,
+B = d.
+Explanation: Functors match, so variable C unifies with 'a' and B unifies with 'd'.
+
+17 ?- edge(C,B)=edge(a,d).
+C = a,
+B = d.
+Explanation: Unification is symmetric; variables match their corresponding constants.
+
+18 ?- edge(A,f(g,h))=edge(a,B).
+A = a,
+B = f(g, h).
+Explanation: First argument binds A to 'a', and second argument binds B to the compound term f(g,h).
+
+19 ?- edge(A,A)=edge(b,c).
+false.
+Explanation: Variable A cannot bind to two different constants ('b' and 'c') at the same time.
+
+20 ?- edge(A,A)=edge(b,b).
+A = b.
+Explanation: Both arguments are identical ('b'), which satisfies the variable constraint for A.
+
+21 ?- A=B,B=f.
+A = B, B = f.
+Explanation: Variable A is bound to B, and setting B to 'f' sets both to 'f'.
+
+22 ?- A=B,B=f,A=e.
+false.
+Explanation: A and B are bound to 'f', so attempting to set A to 'e' causes a conflict (f = e).
